@@ -1,0 +1,51 @@
+/* First content element */
+.setData{
+	display:flex; flex-flow:column nowrap;
+}
+
+/* Contents of .setData */
+.specieData{
+	display:flex; flex-flow:row wrap; align-items:flex-start; align-content:flex-start; overflow-y:scroll; flex-grow:1;
+}
+.specieData aside.specie{
+	height:70px; min-width:70px; text-align:center; font-size:1.3em; border-radius:5px; background:white; padding:0px 10px; margin:0 5px 5px 0; display:flex; justify-content:center; box-sizing:border-box; flex-flow:row wrap; align-items:space-around; font-family:Ubuntu;
+}
+aside.specie.hide{ display:none; }
+aside.specie:active{
+	background:rgba(0, 144, 0, 0.5);
+}
+aside.specie.new{
+	background:#21aa40; color:#fff; opacity:0.4; font-size:3em; padding:0px; font-family:FontAwesome; line-height:70px;
+}
+aside.specie.new.only{ opacity : 1; }
+aside.specie.new:active{
+	color:green; background:transparent;
+}
+aside.specie span{
+	height:75%; line-height:58px;
+}
+aside.specie:not(.prey):not(.predator):not(.predatorPrey) > span{
+	line-height:65px;
+}
+aside.specie i{
+	display:block; width:100%; height:20px; font-size:0.56em; line-height:1.3em; text-transform:uppercase; font-family:Monospace; color:#777; font-style:normal;
+}
+aside.specie.predator i{ color:blue; }
+.specie.predator i::after{ content:"Predator"; }
+aside.specie.predatorPrey i{color:purple;}
+.specie.predatorPrey i::after{ content:"Predator | Prey"; }
+aside.specie.prey i{ color:maroon; }
+.specie.prey i::after{ content:"Prey"; }
+
+.setData > nav{
+	border:1px solid #090; 
+	height:1.7em; font-size:1.4em; line-height:1.7em; min-height:1.7em; border-radius:3px; display:flex; flex-flow:row nowrap; box-sizing:border-box; padding:0px 4px; text-align:center; display:flex; background:#ddd; align-self:flex-end; width:100%;
+}
+.setData nav:active{ background:#fff; }
+.setData nav.unClickable{
+	background:#aaa;
+}
+.setData > nav span{ margin:auto; }
+.setData > nav i.fa{
+	font-size:0.65em; color:#090; margin-right:1em; position:relative; top:-0.15em;
+}

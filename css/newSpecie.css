@@ -1,0 +1,201 @@
+/* new specie tab and its contents */
+main .newSpecie_Box{
+	width:100%; height:100%; background:rgba(0, 0, 0, 0.8); display:flex; position:fixed; top:0px; left:-105%; z-index:2;
+}
+
+main .newSpecie{
+	width:90%; height:90%; max-height:600px; max-width:400px; margin:auto;
+	border-radius:4px; font-size:1rem; color:black; background:white; box-shadow:0px 0px 10px black; display:flex; flex-flow:row wrap; overflow:hidden; overflow-y:scroll; border:5px solid rgba(0, 0, 0, 0.2); box-sizing:border-box; padding:0px;
+}
+/* new specie tab head */
+.newSpecie header{
+	height:40px; display:flex; position:relative; width:100%; left:0px; overflow:hidden; background:rgba(0, 0, 0, 0.2); margin:0px;
+}
+.newSpecie header span:first-child{
+	flex-grow:1; line-height:2em; font-family:Monospace; font-size:1.7em; text-align:center;
+}
+.newSpecie header span:last-child{
+	font-size:1.4em; height:90%; width:0.9em; line-height:1.65em; order:-1; border-radius:50%; padding:0px 0.4em; background:white; left:2px; top:5%; position:absolute; color:rgba(0, 0, 0, 0.7); 
+}
+.newSpecie header span:last-child:active {
+	color:#594222; background:transparent;
+}
+/* Sections in new specie tab*/
+.newSpecie .subtitle{
+	margin:1.6em 0 0 0; font-family:Timeless; text-align:center; display:block; position:relative; overflow:hidden; width:100%;
+}
+.newSpecie .subtitle h3{
+	margin:0 0 0.2em 0; 
+}
+.newSpecie .subtitle > span{
+	font-size:0.7em; padding:0 1em; line-height:1.3em; box-sizing:border-box; display:block; text-align:center;
+}
+/* Each trait in new specie tab */
+.newSpecie .s_tabItem{
+	display:flex; width:100%; padding:5px 2px; box-sizing:border-box; margin:5px 0; flex-flow:row wrap; color:#594222; background:rgba(0, 0, 0, 0.2); height:auto; overflow:hidden; 
+}
+.s_tabItem .inputBox{
+	display:flex; flex-flow:row nowrap; width:100%; 
+}
+.s_tabItem .inputBox.large{
+	flex-flow:column wrap;
+}
+.s_tabItem .inputBox > *:not(.object):first-of-type{
+	padding:0px 3px; font-size:1.1em; min-width:7em; margin:auto; font-family:Timeless;
+}
+/*New specie tab general traits */
+.s_tabItem .inputBox > *:not(.object):last-of-type{
+	flex-grow:1; display:flex; justify-content:center;
+}
+.s_tabItem .inputBox > div:not(.object):last-of-type{
+	height:2.3em; line-height:2.3em; display:flex; justify-content:stretch; 
+}
+.s_tabItem .inputBox input[type=text]{
+	border:1px solid #594222; border-radius:5px; background:#8d8d8d; color:white; font-family:Timeless; height:2.5em; padding:0px 0.5em; font-size:0.9em;
+}
+.s_tabItem .inputBox.rangeBox > .boolean >*, .s_tabItem .inputBox.rangeBox > .range > *{
+	margin:0px 2px; flex-grow:1; font-size:0.9em; font-style:normal; text-align:center; box-sizing:content-box; height:100%;
+}
+.s_tabItem .inputBox .range i{
+	display:flex; align-items:center; line-heiht:40px;
+}
+.s_tabItem .inputBox.rangeBox .range i.fa{ font-weight:bold; }
+.s_tabItem .range i.outOfRange{
+	opacity:0.5;
+}
+.s_tabItem .inputBox.rangeBox div:last-child span{line-height:1.4em; font-size:1.8em; }
+.s_tabItem .range i.fa:active, .s_tabItem .boolean i:active{ background:grey; }
+.s_tabItem .inputBox.rangeBox div.boolean i{
+	font-size:1.2em; line-height:2.1em;
+}
+.s_tabItem .inputBox .boolean *.clicked{
+	border:2px solid #fff; border-radius:5px; line-height:2em;
+}
+.s_tabItem .inputBox .object{
+	disply:flex; width:100%; justify-content:space-between; font-size:0.9em; min-height:40px; flex-flow:row wrap; position:static; margin:5px 0; overflow:hidden;
+}
+.s_tabItem .inputBox .object.prey{
+	overflow-x:scroll; max-height:40px; white-space:nowrap; position:relative; display:block;
+}
+.s_tabItem .inputBox .object.prey span, .s_tabItem .object.preference > *{
+	display:inline-block; height:100%; margin:0 0.3em; padding:0 0.8em; line-height:40px; background:#fff; 
+}
+.s_tabItem .inputBox .object.prey span i{
+	margin:0 0 0 0.3em; color:#090; font-size:0.8em; display:none;
+}
+.s_tabItem .inputBox .object.prey .clicked i{ display:inline; }
+
+.s_tabItem .inputBox .object.preference{
+	max-height:40px; display:flex; justify-content:flex-start; flex-flow:row nowrap;
+	overflow:visible;
+}
+.s_tabItem .object.preference > *{
+	flex-grow:1; line-height:40px; text-align:center; width:40%; max-width:40%; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; 
+}
+.s_tabItem .object.preference .range{
+	align-items:center; min-height:40px; flex-grow:1; display:flex;
+}
+.s_tabItem .object.preference .range > *{
+	min-height:100%; display:inline-block; flex-grow:0; text-align:center; font-size:1.8em; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; 
+}
+.s_tabItem .object.preference .range > * > b{ font-family:Vardana; }
+.s_tabItem .object.preference .range > span{
+	flex-grow:1; font-size:1em; opacity:0.6;
+}
+.s_tabItem .object.preference .range > span.show{ opacity:1; }
+
+
+.s_tabItem .inputBox .object.attributes{
+	display:flex; width:100%; line-height:3.2em; font-size:1.1em; position:static;
+}
+.s_tabItem .inputBox .object.attributes span{
+	flex-grow:2; text-align:center; background:#fff; margin:0px 2px;
+}
+.s_tabItem .inputBox .object.cData{
+	flex-flow:nowrap;
+}
+.s_tabItem .inputBox .object.cData > span{
+	white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.s_tabItem .inputBox .object.cData > span:nth-child(1){ max-width:50%; }
+.s_tabItem .inputBox .object.attributes span:nth-child(2){
+	font-size:0.8em; flex-grow:1;
+}
+.s_tabItem .inputBox .object.attributes span.delete{
+	font-size:0.6em; line-height:5.2em; color:maroon; flex-grow:0; padding:0px 5px; background:transparent; text-transform:uppercase;
+}
+
+
+.s_tabItem > .newAttribute{
+	display:block; box-sizing:border-box; min-width:100%; max-width:100%; overflow:hidden; min-height:20px; padding:1em;
+	background:silver;
+}
+.newAttribute nav{
+	display:flex; flex-flow:row wrap; margin-bottom:1em;
+}
+.s_tabItem > .newAttribute nav > *{ width:100%; text-align:center;}
+.newAttribute .name *{
+	width:100%; box-sizing:border-box;
+}
+.s_tabItem .newAttribute > * > *:first-child{ font-size:1.2em; }
+.s_tabItem .newAttribute .attrValues{
+	display:flex; flex-flow:row wrap; box-sizing:border-box; padding:5px; width:100%;
+}
+.s_tabItem .newAttribute .attrValues span{
+	display:inline-block; height:30px; margin:5px; line-height:2.7em; padding:0px 7px; background:white;
+}
+.s_tabItem .newAttribute .save{
+	display:flex; flex-flow:row nowrap; max-height:50px; overflow:hidden; 
+}
+.s_tabItem .newAttribute .save > *{
+	margin:0px; display:inline-block;
+}
+.s_tabItem .newAttribute .save input{
+	flex-grow:1; width:50%;
+}
+.s_tabItem .newAttribute .save span:last-child{
+	padding:0 7px; font-size:1.3em; color:#090; line-height:2.4em; white-space:nowrap; 
+}
+.s_tabItem .newAttribute .save span:last-child:active{ color:#fff; }
+
+
+.s_tabItem .inputBox .more{
+	background:rgba(0, 150, 0, 0.5); color:white; max-height:2em; text-align:center; display:flex; width:100%; justify-content:space-around;
+}
+.s_tabItem .inputBox .more span{
+	margin:auto;
+}
+.s_tabItem .inputBox .more:active{
+	background:transparent; color:rgba(0, 150, 0, 0.5); 
+}
+
+
+.s_tabItem .hintBox{
+	font-size:0.77em; padding:2px 2em; overflow:hidden; font-family:Ubuntu; text-align:center; flex-grow:1; display:block; height:auto; 
+}
+.s_tabItem.noHint .hintBox{
+	height:0px; padding:0px;
+}
+
+
+
+.newSpecie .submitBox{
+	display:flex; height:50px; max-width:100%; width:100%; box-sizing:border-box; border-top:3px solid rgba(0, 0, 0, 0.2); margin-top:2em;
+}
+.newSpecie .submitBox > *{
+	width:50%; box-sizing:border-box; border:none; outline:none; font-size:0.9em; background:transparent; color:#000; font-family:Timeless;
+}
+.newSpecie .submitBox .saveSpecie{
+	background:#090; font-size:1.3em; color:#fff; flex-grow:1;
+}
+.newSpecie .submitBox > *:active{
+	background:rgba(30, 7, 7, 0.3); color:maroon;
+}
+.newSpecie .submitBox .saveSpecie:active{
+	color:#090; background:#fff;
+}
+
+
+
+
+.newSpecie > *{ position:relative; }

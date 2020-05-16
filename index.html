@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Natural Selection Simulator</title>
+	<meta charset="utf-8">
+	<meta http-equiv="Content-Type" content="text/html; " />
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+
+	<link type="text/css" rel="stylesheet" href="css/main.css">
+	<link type="text/css" rel="stylesheet" href="css/setData.css">
+	<link type="text/css" rel="stylesheet" href="css/showResults.css">
+	<link type="text/css" rel="stylesheet" href="css/popup.css">
+	<link type="text/css" rel="stylesheet" href="css/newSpecie.css">
+	<link type="text/css" rel="stylesheet" href="css/prediction.css">
+	<link type="text/css" rel="stylesheet" href="css/loader.css">
+</head>
+<body>
+<main class="app" >
+	<header>
+		<i class="fa fa-paw"></i><span>Natural Selection</span><i class="fa fa-paw"></i>
+		<div>SIMULATOR</div>
+	</header>
+
+	<div class="contentBox noBar">
+	
+		<!--While vue loads the important stuff-->
+		<div class="beforeLoad" v-cloak>
+			<b>Loading...</b><br>&copy; Leigh E. O., 2018
+		</div>
+	
+		<!-- content tab, for setting specie data -->
+		<div class="content setData" v-cloak>
+			<div class="specieData noBar">
+				<specie v-for="specie in species"
+				 v-bind:specie="specie"
+				 v-on:show_specie_settings="showSpecieSettings($event)"></specie>
+				<aside class="new specie fa fa-plus" @click="showSpecieSettings()" v-bind:class="{ 'only' : (Object.keys(species).length == 0) }"></aside>
+			</div>
+			<nav class="fa" :class="[Object.keys(species).length? '' : 'unClickable']" @click="fetchDuration()">
+				<span><i class="fa fa-play" loader="fa-circle-o-notch"></i>Run Simulation</span>
+			</nav>
+		</div>
+		
+		<!-- content tab, for showing results of simulation -->
+		<results-tab v-cloak
+			v-on:show_popup="togglePopup($event)"
+			v-bind:tab_level="tabLevel"
+		>
+		</results-tab>
+	</div>
+
+	<footer :class="[Object.keys(species).length? '' : 'unClickable']" @click="restart()">
+		<span v-cloak><cool-click><i class="fa fa-globe"></i>New World</cool-click></span>
+	</footer>
+
+	<!-- .newSpecie tab for editing the data of a specie -->
+	<specie-tab
+	  v-bind:trigger="displayedSpecie.count"
+	  v-bind:all_custom_data="allCustomPrefs"
+	  v-on:save_specie_settings="saveSpecieSettings($event)"
+	  v-on:delete_specie_settings="deleteSpecieSettings($event)"
+	  v-on:show_popup="togglePopup($event)"
+	>
+	</specie-tab>
+	
+	
+	<!-- Custom alert tab -->
+	<popup-tab
+	  v-bind:data="popupData"
+	>
+	</popup-tab>
+	
+	
+	<!-- Tab for showing AI predictions -->
+	<prediction-tab
+		v-bind:data="predictionData"
+		v-on:proceed="showResults()"
+		v-on:show_popup="togglePopup($event)"
+	>
+	</prediction-tab>
+	
+</main>
+</body>
+
+<!-- Main lib file, containing my Natural Selection library -->
+<script type="text/javascript" src="libraries/naturalSelection.js"></script>
+
+<!-- Prefix free -->
+<script type="text/javascript" src="libraries/PrefixFree/fullPrefixFree.js"></script>
+
+<!-- External libraries : Vue & Anime -->
+<script type="text/javascript" src="libraries/Vue/vue.min.js"></script>
+<script type="text/javascript" src="libraries/Anime/anime.min.js"></script>
+
+<!-- Main script, Require'd -->
+<script type="text/javascript" src="libraries/Require/require.js" data-main="js/main.js"></script>
+
+<!-- Font Awesome -->
+<link type="text/css" rel="stylesheet" href="libraries/FontAwesome/css/font-awesome.min.css">
+</html >

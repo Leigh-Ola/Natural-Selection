@@ -1,0 +1,33 @@
+.app .popupTab{
+	position:fixed; z-index:4; top:0px; left:0px; width:100%; height:100%; display:flex; justify-content:center; align-items:center; background:rgba(0, 0, 0, 0.8); font-family:Ubuntu;
+}
+.popupTab .popup{
+	margin:auto; width:14em; max-height:18em; max-width:90%; box-sizing:border-box; padding:0.8em; display:flex; flex-flow:column nowrap; background:#fff; overflow:hidden; border-radius:5px; position:relative;
+}
+.popupTab .popup .text{
+	display:block; margin:auto 0px; width:100%; max-height:calc(100% - 5em); overflow-x:hidden; overflow-y:scroll; box-sizing:border-box; padding:0.5em 0px 7px; white-space:pre-line; font-size:0.9em; color:#444; line-spacing:3px;
+}
+
+.popupTab .popup .range{
+	height:2em; min-height:2em; display:flex; width:100%; box-sizing:border-box; margin:1em 0px; border:1px solid #aaa; border-radius:2px; background:#aaa;
+}
+.popupTab .popup .range > *{
+	min-height:100%; height:100%; margin:0px 2px; padding:0 0.5em; line-height:40px; text-align:center; font-size:1.1em; line-height:1.8em; font-weight:bold;
+}
+.popupTab .popup .range > span{
+	flex-grow:1; padding:0px; font-size:1.2em; line-height:1.6em; font-weight:normal;
+}
+.popupTab .popup .range > i:active{
+	background:grey;
+}
+
+.popupTab .popup .buttonBox{
+	display:block; width:100%; height:3em; max-height:3em; min-height:3em; display:flex; justify-content:flex-end; align-self:flex-end; font-family:Roboto; padding:3px 0px; box-sizing:border-box;
+}
+.popupTab .popup button{
+	display:block; height:100%; padding:0px 1em; background:white; border:1px solid #aaa; border-radius:2px; font-family:inherit; font-size:1.15em; box-sizing:border-box; background:#ddd;
+}
+.popupTab button:active{
+	background:#777; border:none;
+}
+.popupTab button:active, .popupTab button:hover, .popupTab button{ outline:none; }

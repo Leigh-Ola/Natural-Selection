@@ -1,0 +1,26 @@
+.loaderContainer{
+	display:block; min-width:100%; min-height:100%; box-sizing:border-box; padding:0px; position:relative; border-radius:0px;
+}
+.loaderContainer *{
+	display:block; padding:10%; margin:0px; box-sizing:border-box; border-width:4px; border-style:solid; width:100%; height:100%; border-radius:50%;
+}
+.loaderContainer .one{
+	border-color:#090 transparent;
+	animation:turn 1s linear 0s infinite;
+}
+.loaderContainer .two{
+	border-color:#594222 transparent;
+	animation:turn 0.5s linear 0s infinite reverse;
+}
+.loaderContainer .three{
+	border:8px dashed #090;
+	animation:turn 0.4s linear 0s infinite;
+}
+.loaderContainer .four {
+	border-color:#594222 transparent; 
+	animation:turn 0.2s linear 0s infinite reverse;
+}
+@keyframes turn{
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}

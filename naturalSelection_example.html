@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Natural Selection Simulator</title>
+</head>
+<body>
+	<div class="data">loading
+	</div>
+</body>
+<script type="text/javascript" src="libraries/naturalSelection.js"></script>
+<script type="text/javascript">
+
+/* ... */
+/* Below is an example showing how to simulate a world, with virtual species */
+
+var rat = {
+	name:"rat", lifespan:4, health:4, maturity: 1, kids:6, offence: 10, sexDrive: 80, pregnancy: 1, isPredator : false, customData : {
+	color : ["white", "brown", "black"],
+	longTail : ["true", "false"]
+	}
+}//define rat specie
+
+var snake = {
+	name:"snake", lifespan:8, health:8, maturity: 1, kids:5, offence: 35, sexDrive: 50, pregnancy: 2, isPredator : true,
+	prey : ["rat"],
+	customPrefs : {color:"black"},
+	customData : {
+		color : ["grey","black","mixed","brown","ash","green"],
+		longTail : ["true","false"]
+	}
+}//define snake specie
+
+var eagle = {
+	name:"eagle", lifespan:10, health:5, maturity: 2, kids:2, offence: 55, sexDrive: 40, pregnancy: 1, isPredator : true,
+	prey : ["snake", "rat"],
+	customPrefs : {longTail:"true"},
+	customData : {
+		color : ["grey","black","mixed","brown","ash"]
+	}
+}//define eagle specie
+
+//Create virtual world
+const Earth = new World();
+
+// Create species
+Earth.createSpecies([rat, snake, eagle]);
+
+//Create initial members of each specie
+Earth.createIndividuals("rat", 10);
+Earth.createIndividuals("snake", 7);
+Earth.createIndividuals("eagle", 7)
+
+// Simulate life for 15 weeks.
+Earth.simulate(15)
+
+/*
+
+Everything below here is used only for displaying useful data. Not required.
+
+*/
+
+function displayReport(){
+	var report = "";
+	Earth.getSpecies().eachSpecies(function(){
+		report += (this+"\nTotal lives : "+this.count+"<br/>Current population : "+this.individuals.length+"<br/>"+divList(this.stats)+"<br/><br/>");
+	});
+	display(report);
+}
+
+function displaySpecieCustomData(specie){
+	if(Earth.getSpecies()[specie].individuals.length == 0){ return; }
+	var stats = Earth.getSpecies()[specie].stats
+	var cd = stats.customData;
+	var a = specie+" custom data :<br/>";
+	var b = 0;
+	for(var x in cd){
+		for(var y in cd[x]){
+			a+=(y+" = "+cd[x][y]+"<br/>");
+			b+=(cd[x][y]);
+		}
+		a+="<br/>";
+	}
+	display(a);
+	a = "";
+	for(var i in stats){
+		a+=(i+" : "+stats[i]+"<br/>");
+	}
+	display(a);
+	display("<br/>");
+}
+
+displayReport();
+displaySpecieCustomData("snake")
+display("Random Rat : ");
+for(var i in Earth.getSpecies().rat.individuals[0]){
+	display(i+" : "+Earth.getSpecies().rat.individuals[0][i]);
+}
+display("<br/><br/>Log :<br/>"+Earth.getLog().join("<br/>"));
+
+
+function display(txt){
+	document.querySelector(".data").innerHTML += ("<br/>"+txt);
+}
+
+function divList(lst){
+	if(String(lst.constructor).indexOf("rray") > -1){
+		var ans = "";
+		for(var i in lst){
+			ans+=(divList(lst[i])+"\n");
+		}
+		return ans;
+	}
+	var str = [];
+	var isObj = (String(lst.constructor).indexOf("rray") > -1)? false : true ;
+	for(var i in lst){
+		str+=( ( (isObj)? (i+" : "+lst[i]) : (lst[i]) )+"\n" );
+	}
+	return str;
+}/**/
+</script>
+</html >

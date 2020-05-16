@@ -1,0 +1,191 @@
+@font-face {
+  font-family: Ubuntu;
+  src: url("../fonts/ubuntu/Ubuntu.ttf");
+}
+@font-face {
+  font-family: Roboto;
+  src: url("../fonts/roboto/Roboto.ttf");
+}
+@font-face {
+  font-family: Timeless;
+  src: url("../../../Fonts/Normal/timeless/Timeless.ttf");
+}
+
+body {
+  padding: 0px;
+  margin: 0px;
+}
+
+.app {
+  display: flex;
+  flex-flow: column nowrap;
+  font-size: 100%;
+  height: 100%;
+  width: 100%;
+  max-width: 100%;
+  position: absolute;
+  overflow: hidden;
+}
+
+/* outer header and inner footer */
+.app > header,
+.app > footer {
+  padding: 5px 10px;
+  height: 50px;
+  font-size: 1.6em;
+  text-align: center;
+  font-family: Timeless;
+  position: static;
+}
+
+.app > header .fa {
+  color: #090;
+  font-size: 0.7em;
+}
+.app > header div {
+  font-size: 0.5em;
+}
+.app > header span {
+  position: relative;
+}
+.app > header span::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0px;
+  height: 2px;
+  background: #090;
+  width: 100%;
+  border-radius: 3px;
+  transform: scaleX(0);
+  transition: transform 0.2s ease;
+  transform-origin: bottom right;
+}
+.app > header span:hover::after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+.app > footer {
+  line-height: 1.9em;
+  background: #090;
+}
+.app > footer:active,
+footer:active .fa {
+  color: #fff;
+}
+.app > footer .fa {
+  color: #009;
+}
+.app > footer > span * {
+  transition: all 0 5s ease;
+}
+
+/* Here lies the important stuff */
+.contentBox {
+  background: silver;
+  box-sizing: border-box;
+  display: flex;
+  flex-flow: row nowrap;
+  position: relative;
+  align-items: stretch;
+  overflow: hidden;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  height: calc(100% - 100px);
+  border: 2px solid silver;
+}
+
+/* While vue loads the full content */
+.contentBox .beforeLoad {
+  min-width: 100%;
+  margin: auto;
+  box-sizing: border-box;
+  text-align: center;
+  visibility: hidden;
+  display: none;
+}
+
+/*full content*/
+.contentBox .content {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  min-width: 100%;
+  height: 100%;
+  max-height: calc(100% - 15px);
+  position: relative;
+}
+
+/* General Utilities */
+[v-cloak] {
+  visibility: hidden;
+}
+.beforeLoad[v-cloak] {
+  visibility: visible;
+  display: block;
+}
+i.fa {
+  padding: 0px 0.3em;
+}
+.unClickable {
+  opacity: 0.5;
+}
+.TNR {
+  font-family: "Times New Roman";
+}
+.MS {
+  font-family: Monospace;
+}
+.RB {
+  font-family: Roboto;
+}
+.UB {
+  font-family: Ubuntu;
+}
+.TL {
+  font-family: Timeless;
+}
+.SS {
+  font-family: Serif;
+}
+input {
+  border: none;
+  outline: none;
+}
+input:active,
+input:hover,
+button:active,
+button:hover {
+  outline: none;
+}
+.noBar::scrollbar {
+  display: none;
+  height: 0px;
+  width: 0%;
+  background: transparent;
+}
+.noBar::-moz-scrollbar {
+  display: none;
+  height: 0px;
+  width: 0%;
+  background: transparent;
+}
+.noBar::-ms-scrollbar {
+  display: none;
+  height: 0px;
+  width: 0%;
+  background: transparent;
+}
+.noBar::-webkit-scrollbar {
+  display: none;
+  height: 0px;
+  width: 0%;
+  background: transparent;
+}
+.noBar::-o-scrollbar {
+  display: none;
+  height: 0px;
+  width: 0%;
+  background: transparent;
+}
